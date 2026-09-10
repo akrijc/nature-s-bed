@@ -2,8 +2,8 @@ import type { Product, ProductConfiguration } from "@/types";
 import { getDimension } from "@/data/dimensions";
 import { getColorsForQuality, paintQualities } from "@/data/paints";
 
-const defaultQuality = paintQualities[0];
-const defaultColor = getColorsForQuality(defaultQuality.id)[0];
+const defaultQuality = paintQualities[0]!;
+const defaultColor = getColorsForQuality(defaultQuality.id)[0]!;
 
 export function defaultConfigForProduct(product: Product): ProductConfiguration {
   const d = getDimension(product.defaultDimensionId);

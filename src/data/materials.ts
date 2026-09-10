@@ -28,4 +28,4 @@ export const thicknesses = [
   { value: 45 as const, label: "45 mm", note: "Masivní provedení, nejdelší životnost" },
 ];
 
-export const getMaterial = (id: string) => materials.find((m) => m.id === id) ?? materials[0];
+export const getMaterial = (id: string) => materials.find((m) => m.id === id) ?? materials[0]!;

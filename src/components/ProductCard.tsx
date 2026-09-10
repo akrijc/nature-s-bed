@@ -43,7 +43,7 @@ export function ProductCard({ product }: { product: Product }) {
           </li>
           <li className="rounded-full bg-secondary px-3 py-1">{paintQualities.length} kvality nátěru</li>
           <li className="rounded-full bg-secondary px-3 py-1">
-            {getColorsForQuality(paintQualities[0].id).length} odstínů
+            {getColorsForQuality(paintQualities[0]!.id).length} odstínů
           </li>
         </ul>
 

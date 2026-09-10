@@ -47,6 +47,6 @@ export const getColorsForQuality = (qualityId: string) =>
   paintColors.filter((c) => c.qualityId === qualityId);
 
 export const getPaintQuality = (id: string) =>
-  paintQualities.find((q) => q.id === id) ?? paintQualities[0];
+  paintQualities.find((q) => q.id === id) ?? paintQualities[0]!;
 
 export const getPaintColor = (id: string) => paintColors.find((c) => c.id === id);

@@ -12,7 +12,7 @@ export const dimensions: Dimension[] = [
 
 export const formatDimension = (l: number, w: number, h: number) => `${l} × ${w} × ${h} cm`;
 
-export const getDimension = (id: string) => dimensions.find((d) => d.id === id) ?? dimensions[0];
+export const getDimension = (id: string) => dimensions.find((d) => d.id === id) ?? dimensions[0]!;
 
 /** Limity pro konfigurátor na míru (cm). */
 export const customLimits = {

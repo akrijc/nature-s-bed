@@ -17,7 +17,7 @@ interface ConfiguratorProps {
   lockMaterial?: boolean;
 }
 
-function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
+function Field({ label, hint, children }: { label: string; hint?: string | undefined; children: React.ReactNode }) {
   return (
     <div>
       <div className="mb-2 flex items-baseline justify-between gap-3">
@@ -38,7 +38,7 @@ function OptionButton({
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <button
@@ -73,7 +73,7 @@ export function Configurator({ mode, initialConfig, title, lockMaterial }: Confi
   const color = getPaintColor(config.paintColorId) ?? colors[0];
 
   const selectQuality = (qualityId: string) => {
-    const first = getColorsForQuality(qualityId)[0];
+    const first = getColorsForQuality(qualityId)[0]!;
     setConfig((prev) => ({ ...prev, paintQualityId: qualityId, paintColorId: first.id }));
   };
 
