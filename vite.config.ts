@@ -11,5 +11,23 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Celý web je čistě klientský (žádné serverové funkce), takže se všechny
+    // stránky předgenerují do statického HTML.
+    pages: [
+      { path: "/" },
+      { path: "/produkty" },
+      { path: "/produkty/borovice-28" },
+      { path: "/produkty/borovice-45" },
+      { path: "/produkty/modrin-28" },
+      { path: "/produkty/modrin-45" },
+      { path: "/zahon-na-miru" },
+      { path: "/kosik" },
+      { path: "/objednavka" },
+      { path: "/objednavka-prijata" },
+      { path: "/o-nas" },
+      { path: "/kontakt" },
+      { path: "/admin" },
+    ],
+    prerender: { enabled: true, autoStaticPathsDiscovery: false },
   },
 });
