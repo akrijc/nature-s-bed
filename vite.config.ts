@@ -6,7 +6,12 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Pro GitHub Pages se build spouští s BASE_PATH="/nazev-repozitare/".
+// Lokálně i v Lovable náhledu zůstává "/" – nic se tím nemění.
+const base = process.env["BASE_PATH"] ?? "/";
+
 export default defineConfig({
+  vite: { base },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
