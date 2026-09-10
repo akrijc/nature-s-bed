@@ -61,7 +61,10 @@ function AdminPage() {
       ...prev,
       materialPricePerM2: {
         ...prev.materialPricePerM2,
-        [materialId]: { ...prev.materialPricePerM2[materialId], [thickness]: value },
+        [materialId]: {
+          ...(prev.materialPricePerM2[materialId] ?? { 28: 0, 45: 0 }),
+          [thickness]: value,
+        },
       },
     }));
 
