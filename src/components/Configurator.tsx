@@ -270,7 +270,7 @@ export function Configurator({ mode, initialConfig, title, lockMaterial }: Confi
       </div>
 
       {/* Souhrn konfigurace + cena */}
-      <aside className="surface-card sticky bottom-0 z-30 p-5 lg:top-24">
+      <aside className="surface-card p-5 lg:sticky lg:top-24">
         <h3 className="font-display text-lg">Přehled konfigurace</h3>
         <dl className="mt-4 space-y-2 text-sm">
           {[
@@ -324,6 +324,25 @@ export function Configurator({ mode, initialConfig, title, lockMaterial }: Confi
           <ShoppingCart className="size-5" /> Přidat do košíku
         </button>
       </aside>
+
+      {/* Kompaktní cenová lišta na mobilu */}
+      <div className="sticky bottom-0 z-30 -mx-4 border-t border-border bg-card/95 px-4 py-3 backdrop-blur lg:hidden">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <span className="block text-xs text-muted-foreground">Celková cena</span>
+            <span className="font-display text-xl font-semibold text-primary">
+              {formatPrice(price.totalPrice)}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={addToCart}
+            className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground"
+          >
+            <ShoppingCart className="size-4" /> Do košíku
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
