@@ -32,17 +32,33 @@ jobs:
           BASE_PATH: /${{ github.event.repository.name }}/
         run: npm run build
 
-      # Fallback pro přímé otevření podstránky (GitHub Pages nemá server-side routing)
-      - name: 404 fallback
-        run: cp dist/client/index.html dist/client/404.html
-
-      - name: Vypnout Jekyll
-        run: touch dist/client/.nojekyll
+      # Najde skutečný výstupní adresář a připraví 404 fallback pro GitHub Pages.
+      - name: Prepare GitHub Pages artifact
+        run: |
+          set -e
+          if [ -f dist/client/index.html ]; then
+            OUT_DIR="dist/client"
+          elif [ -f dist/index.html ]; then
+            OUT_DIR="dist"
+          elif [ -f .output/public/index.html ]; then
+            OUT_DIR=".output/public"
+          else
+            echo "ERROR: index.html not found in expected locations."
+            echo "--- dist tree ---"
+            find dist -maxdepth 3 -type f 2>/dev/null | head -50 || true
+            echo "--- .output tree ---"
+            find .output -maxdepth 3 -type f 2>/dev/null | head -50 || true
+            exit 1
+          fi
+          echo "Build output directory: $OUT_DIR"
+          cp "$OUT_DIR/index.html" "$OUT_DIR/404.html"
+          touch "$OUT_DIR/.nojekyll"
+          echo "OUT_DIR=$OUT_DIR" >> "$GITHUB_ENV"
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/client
+          path: ${{ env.OUT_DIR }}
 
   deploy:
     needs: build
