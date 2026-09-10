@@ -107,7 +107,9 @@ export function Configurator({ mode, initialConfig, title, lockMaterial }: Confi
               <OptionButton
                 key={m.id}
                 active={config.materialId === m.id}
-                onClick={() => !lockMaterial && set("materialId", m.id)}
+                onClick={() => {
+                  if (!lockMaterial) set("materialId", m.id);
+                }}
                 className={lockMaterial && config.materialId !== m.id ? "opacity-40" : undefined}
               >
                 <span className="block font-medium">{m.name}</span>
