@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as KosikRouteImport } from './routes/kosik'
+import { Route as ONasRouteImport } from './routes/o-nas'
+import { Route as ObjednavkaRouteImport } from './routes/objednavka'
+import { Route as ObjednavkaPrijataRouteImport } from './routes/objednavka-prijata'
+import { Route as ZahonNaMiruRouteImport } from './routes/zahon-na-miru'
+import { Route as ProduktyIndexRouteImport } from './routes/produkty.index'
+import { Route as ProduktySlugRouteImport } from './routes/produkty.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KosikRoute = KosikRouteImport.update({
+  id: '/kosik',
+  path: '/kosik',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ONasRoute = ONasRouteImport.update({
+  id: '/o-nas',
+  path: '/o-nas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObjednavkaRoute = ObjednavkaRouteImport.update({
+  id: '/objednavka',
+  path: '/objednavka',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObjednavkaPrijataRoute = ObjednavkaPrijataRouteImport.update({
+  id: '/objednavka-prijata',
+  path: '/objednavka-prijata',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ZahonNaMiruRoute = ZahonNaMiruRouteImport.update({
+  id: '/zahon-na-miru',
+  path: '/zahon-na-miru',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProduktyIndexRoute = ProduktyIndexRouteImport.update({
+  id: '/produkty/',
+  path: '/produkty/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProduktySlugRoute = ProduktySlugRouteImport.update({
+  id: '/produkty/$slug',
+  path: '/produkty/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/kontakt': typeof KontaktRoute
+  '/kosik': typeof KosikRoute
+  '/o-nas': typeof ONasRoute
+  '/objednavka': typeof ObjednavkaRoute
+  '/objednavka-prijata': typeof ObjednavkaPrijataRoute
+  '/zahon-na-miru': typeof ZahonNaMiruRoute
+  '/produkty/$slug': typeof ProduktySlugRoute
+  '/produkty/': typeof ProduktyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/kontakt': typeof KontaktRoute
+  '/kosik': typeof KosikRoute
+  '/o-nas': typeof ONasRoute
+  '/objednavka': typeof ObjednavkaRoute
+  '/objednavka-prijata': typeof ObjednavkaPrijataRoute
+  '/zahon-na-miru': typeof ZahonNaMiruRoute
+  '/produkty/$slug': typeof ProduktySlugRoute
+  '/produkty': typeof ProduktyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/kontakt': typeof KontaktRoute
+  '/kosik': typeof KosikRoute
+  '/o-nas': typeof ONasRoute
+  '/objednavka': typeof ObjednavkaRoute
+  '/objednavka-prijata': typeof ObjednavkaPrijataRoute
+  '/zahon-na-miru': typeof ZahonNaMiruRoute
+  '/produkty/$slug': typeof ProduktySlugRoute
+  '/produkty/': typeof ProduktyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/kontakt'
+    | '/kosik'
+    | '/o-nas'
+    | '/objednavka'
+    | '/objednavka-prijata'
+    | '/zahon-na-miru'
+    | '/produkty/$slug'
+    | '/produkty/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/admin'
+    | '/kontakt'
+    | '/kosik'
+    | '/o-nas'
+    | '/objednavka'
+    | '/objednavka-prijata'
+    | '/zahon-na-miru'
+    | '/produkty/$slug'
+    | '/produkty'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/kontakt'
+    | '/kosik'
+    | '/o-nas'
+    | '/objednavka'
+    | '/objednavka-prijata'
+    | '/zahon-na-miru'
+    | '/produkty/$slug'
+    | '/produkty/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  KontaktRoute: typeof KontaktRoute
+  KosikRoute: typeof KosikRoute
+  ONasRoute: typeof ONasRoute
+  ObjednavkaRoute: typeof ObjednavkaRoute
+  ObjednavkaPrijataRoute: typeof ObjednavkaPrijataRoute
+  ZahonNaMiruRoute: typeof ZahonNaMiruRoute
+  ProduktySlugRoute: typeof ProduktySlugRoute
+  ProduktyIndexRoute: typeof ProduktyIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kosik': {
+      id: '/kosik'
+      path: '/kosik'
+      fullPath: '/kosik'
+      preLoaderRoute: typeof KosikRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/o-nas': {
+      id: '/o-nas'
+      path: '/o-nas'
+      fullPath: '/o-nas'
+      preLoaderRoute: typeof ONasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/objednavka': {
+      id: '/objednavka'
+      path: '/objednavka'
+      fullPath: '/objednavka'
+      preLoaderRoute: typeof ObjednavkaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/objednavka-prijata': {
+      id: '/objednavka-prijata'
+      path: '/objednavka-prijata'
+      fullPath: '/objednavka-prijata'
+      preLoaderRoute: typeof ObjednavkaPrijataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/zahon-na-miru': {
+      id: '/zahon-na-miru'
+      path: '/zahon-na-miru'
+      fullPath: '/zahon-na-miru'
+      preLoaderRoute: typeof ZahonNaMiruRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produkty/': {
+      id: '/produkty/'
+      path: '/produkty'
+      fullPath: '/produkty/'
+      preLoaderRoute: typeof ProduktyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produkty/$slug': {
+      id: '/produkty/$slug'
+      path: '/produkty/$slug'
+      fullPath: '/produkty/$slug'
+      preLoaderRoute: typeof ProduktySlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  KontaktRoute: KontaktRoute,
+  KosikRoute: KosikRoute,
+  ONasRoute: ONasRoute,
+  ObjednavkaRoute: ObjednavkaRoute,
+  ObjednavkaPrijataRoute: ObjednavkaPrijataRoute,
+  ZahonNaMiruRoute: ZahonNaMiruRoute,
+  ProduktySlugRoute: ProduktySlugRoute,
+  ProduktyIndexRoute: ProduktyIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
